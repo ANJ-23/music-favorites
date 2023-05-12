@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Songs extends Model {}
+class Songs extends Model { }
 
-Project.init(
+Songs.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -18,12 +18,7 @@ Project.init(
     description: {
       type: DataTypes.STRING,
     },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-        user_id: { //foreign key for the relationship between the songs and user models 
+    user_id: { //foreign key for the relationship between the songs and user models 
       type: DataTypes.INTEGER,
       references: {
         model: 'User',
