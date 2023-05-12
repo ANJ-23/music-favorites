@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Project extends Model {}
+class Songs extends Model {}
 
 Project.init(
   {
@@ -23,10 +23,10 @@ Project.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-        user_id: {
+        user_id: { //foreign key for the relationship between the songs and user models 
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
+        model: 'User',
         key: 'id',
       },
     },
@@ -36,8 +36,8 @@ Project.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'songs',
+    modelName: 'Songs',
   }
 );
 
-module.exports = songs;
+module.exports = Songs;
