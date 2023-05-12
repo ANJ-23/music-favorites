@@ -37,11 +37,11 @@ Project.init(
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'project',
+    modelName: 'songs',
   }
 );
 
-module.exports = Project;
+module.exports = songs;
