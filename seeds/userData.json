@@ -2,11 +2,24 @@
   {
     "name": "HomerSimpson",
     "email": "this@email.com",
-    "password": ""
+    "password": "1234dogs"
   },
+
   {
-    "name": "HomerSimpson",
+    "name": "LisaSimpson",
     "email": "this@email.com",
-    "password": ""
+    "password": "1234cats"
+  },
+
+  {
+    "name": "BartSimpson",
+    "email": "this@email.com",
+    "password": "1234woof"
+  },
+
+  {
+    "name": "MargeSimpson",
+    "email": "this@email.com",
+    "password": "1234meow"
   }
 ]
