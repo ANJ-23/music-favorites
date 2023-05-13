@@ -1,25 +1,25 @@
 [
   {
     "name": "HomerSimpson",
-    "email": "this@email.com",
+    "email": "homer@email.com",
     "password": "1234dogs"
   },
 
   {
     "name": "LisaSimpson",
-    "email": "this@email.com",
+    "email": "lisa@email.com",
     "password": "1234cats"
   },
 
   {
     "name": "BartSimpson",
-    "email": "this@email.com",
+    "email": "bart@email.com",
     "password": "1234woof"
   },
 
   {
     "name": "MargeSimpson",
-    "email": "this@email.com",
+    "email": "marge@email.com",
     "password": "1234meow"
   }
 ]
