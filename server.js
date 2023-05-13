@@ -1,46 +1,45 @@
-const path = require('path');
-const express = require('express');
-const session = require('express-session');
-const exphbs = require('express-handlebars');
-const routes = require('./controllers');
-const helpers = require('./utils/helpers');
+const express = require ('express')
+const app = express()
+const PORT = process.env.PORT || 3001
+const exphbs = require ('express-handlebars')
+const helpers = require ('./utils/helpers')
+const htmlRoutes = require("./controllers/html-routes")
+const path = require("path")
+const hbs = exphbs.create({helpers})
+const { Sequelize } = require('sequelize');
+//const { create } = require('./models/favorites')
 
-const sequelize = require('./config/connection');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+app.engine('handlebars', hbs.engine); //setting up hbs
+app.set('view engine', 'handlebars'); //setting up hbs
 
-const app = express();
-const PORT = process.env.PORT || 3001;
-
-// Set up Handlebars.js engine with custom helpers
-const hbs = exphbs.create({ helpers });
-
-const sess = {
-  secret: 'Super secret secret',
-  cookie: {
-    maxAge: 300000,
-    httpOnly: true,
-    secure: false,
-    sameSite: 'strict',
-  },
-  resave: false,
-  saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize
-  })
-};
-
-app.use(session(sess));
-
-// Inform Express.js on which template engine to use
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); //formatting/parcing requests coming in into json format
+app.use(express.urlencoded({ extended: true })); //changing the format of the url (replacing % w/ space)
 app.use(express.static(path.join(__dirname, 'public')));
+app.use("/", htmlRoutes)
+app.listen (PORT, () => {
+    console.log("Server is Listening") //turning server on
+})
 
-app.use(routes);
+// Option 3: Passing parameters separately (other dialects)
+const sequelize = new Sequelize('my_database', 'belane@localhost', 'newpassword', {
+    host: 'localhost',
+    dialect: 'mysql'
+  });
 
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
-});
+  
+//   async function createDbConnection(){
+//     try {
+//         await sequelize.authenticate();
+//         console.log('Connection has been established successfully.');
+//       } catch (error) {
+//         console.error('Unable to connect to the database:', error);
+//       }
+//   }
+//   createDbConnection();
+
+
+// sequelize.authenticate().then(()=>{
+// console.log('connection created successfully')
+// }).catch((error)=>{
+//     console.log(error)
+// })
