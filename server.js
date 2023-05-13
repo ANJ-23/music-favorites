@@ -11,7 +11,7 @@ app.engine('handlebars', hbs.engine); //setting up hbs
 app.set('view engine', 'handlebars'); //setting up hbs
 
 app.use(express.json()); //formatting/parcing requests coming in into json format
-app.use(express.urlencoded({ extended: false })); //changing the format of the url (replacing % w/ space)
+app.use(express.urlencoded({ extended: true })); //changing the format of the url (replacing % w/ space)
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/", htmlRoutes)
 app.listen (PORT, () => {
