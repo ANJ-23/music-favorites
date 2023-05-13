@@ -1,3 +1,21 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+    
 #title {
-    background-color: blue;
+    background-color: black;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+footer nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
 }
