@@ -6,6 +6,7 @@ const { User } = require('../../models');
 // /users
 // default '/users' page
 router.post('/', async (req, res) => {
+  console.log ("user create")
   try {
     const userData = await User.create(req.body);
 
@@ -24,6 +25,7 @@ router.post('/', async (req, res) => {
 // logs in user ("creates" new user instance?)
 // Not sure if this is used here, used in 'html-routes.js', or needed at all
 router.post('/login', async (req, res) => {
+  console.log ("loginRoute")
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
 
