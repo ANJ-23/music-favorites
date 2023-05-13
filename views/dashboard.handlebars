@@ -1,0 +1,109 @@
+<link rel="stylesheet" type="text/css" href="/assets/css/dashboard.css">
+
+<h1>This is the song tables page</h1>
+
+<div style="overflow-x: auto;">
+
+<table id="table">
+    <thead>
+        <th> 
+            Song Title
+        </th>
+        <th>
+            Artist
+        </th>
+        <th>Release Date</th>
+        <th>Add To Favorite</th>
+    </thead>
+    <tbody>
+    <tr>
+   <td>Song 1</td>
+   <td>Artist 1</td>
+   <td>Release Date 1</td>
+   <td><button onclick="addToFav('Song 1')">Add To Fav</button></td>
+    </tr>
+
+    <tr>
+   <td>Song 2</td>
+   <td>Artist 2</td>
+   <td>Release Date 2</td>
+   <td><button>Add To Fav</button></td>
+    </tr>
+
+    <tr>
+   <td>Song 3</td>
+   <td>Artist 3</td>
+   <td>Release Date 3</td>
+   <td><button>Add To Fav</button></td>
+    </tr>
+
+    <tr>
+   <td>Song 4</td>
+   <td>Artist 4</td>
+   <td>Release Date 4</td>
+   <td><button>Add To Fav</button></td>
+    </tr>
+
+    <tr>
+   <td>Song 5</td>
+   <td>Artist 5</td>
+   <td>Release Date 5</td>
+   <td><button>Add To Fav</button></td>
+    </tr>
+
+    <tr>
+   <td>Song 6</td>
+   <td>Artist 6</td>
+   <td>Release Date 6</td>
+   <td><button>Add To Fav</button></td>
+    </tr>
+
+    <tr>
+   <td>Song 7</td>
+   <td>Artist 7</td>
+   <td>Release Date 7</td>
+   <td><button>Add To Fav</button></td>
+    </tr>
+
+    <tr>
+   <td>Song 8</td>
+   <td>Artist 8</td>
+   <td>Release Date 8</td>
+   <td><button>Add To Fav</button></td>
+    </tr>
+
+    <tr>
+   <td>Song 9</td>
+   <td>Artist 9</td>
+   <td>Release Date 9</td>
+   <td><button>Add To Fav</button></td>
+    </tr>
+
+    <tr>
+   <td>Song 10</td>
+   <td>Artist 10</td>
+   <td>Release Date 10</td>
+   <td><button>Add To Fav</button></td>
+    </tr>
+
+    </tbody>
+</table>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+<script>
+function addToFav(name){
+    $.ajax({
+        url:'/addToFavorite',
+        type:'POST' ,
+        data:{
+           name:name
+        } ,
+        success:function(result){
+            console.log(result);
+            return result;
+        } 
+    })
+}
+</script>
