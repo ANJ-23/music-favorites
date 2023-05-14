@@ -11,11 +11,25 @@ Favorites.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    // FROM Andrew: Instead of having 'name' and 'artist' keys in "Favorites", I think the "Songs" object's ID should be imported & utilized for relationship mapping (see index.js for my suggested code):
+    // "Songs" belongs to many "User" (through model: "Favorites"?)
+    // "User" belongs to many "Songs" (through model: "Favorites"?)
+    /* 
+    song_id code:
+
+    song_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Songs',
+        key: 'id',
+      },
+    },
+    */
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
+    artist: {
       type: DataTypes.STRING,
     },
     user_id: { //foreign key for the relationship between the songs and user models 

@@ -15,7 +15,7 @@ Songs.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
+    artist: {
       type: DataTypes.STRING,
     },
     user_id: { //foreign key for the relationship between the songs and user models 
