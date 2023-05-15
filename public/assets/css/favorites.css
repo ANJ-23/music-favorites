@@ -5,7 +5,7 @@
   }
 
 #table td, #table th {
-    border: 1px solid green;
+    border: 1px solid #04AA6D;
     padding: 8px;
   }
   
@@ -15,4 +15,8 @@
     text-align: left;
     background-color: #04AA6D;
     color: white;
+  }
+
+  #fav {
+    text-align: center;
   }

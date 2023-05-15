@@ -6,6 +6,11 @@ body {
     
 #title {
     background-color: black;
+    text-align: center;
+}
+
+#songs {
+  text-align: center;
 }
 
 header nav ul {
@@ -18,4 +23,54 @@ footer nav ul {
     display: flex;
     justify-content: space-between;
     list-style: none;
+    margin-top: 180px;
 }
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: red;
+    text-align: center;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 100px;
+    height: 100px;
+    color: #04AA6D;
+  }
+  
+  .card ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .card li {
+    margin-bottom: 10px;
+  }
+
+  #login {
+    text-align: center;
+    line-height: 2;
+  }
+
+  #signup {
+    text-align: center;
+    line-height: 2;
+  }
+
+  #user {
+    text-align: center;
+    line-height: 2;
+  }
+
+  #pass {
+    text-align: center;
+    line-height: 2;
+  }
