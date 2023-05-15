@@ -6,7 +6,7 @@ router.get("/", async (req, res) => {
         // renders "homepage" handlebar; prompts the user to sign-in or log-in
         // (Needed?) also checks if user is logged in
         res.render("homepage", {
-            logged_in: req.session.logged_in
+            //logged_in: req.session.logged_in
         });
 
         
