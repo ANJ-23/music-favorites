@@ -1,41 +1,41 @@
 [
   {
     "name": "Song Title 1",
-    "description": "Song A"
+    "artist": "Artist A"
   },
 
   {
     "name": "Song Title 2",
-    "description": "Song B"
+    "artist": "Artist B"
   },
 
   {
     "name": "Song Title 3",
-    "description": "Song C"
+    "artist": "Artist C"
   },
 
   {
     "name": "Song Title 4",
-    "description": "Song D"
+    "artist": "Artist D"
   },
 
   {
     "name": "Song Title 5",
-    "description": "Song E"
+    "artist": "Artist E"
   },
 
   {
     "name": "Song Title 6",
-    "description": "Song F"
+    "artist": "Artist F"
   },
 
   {
     "name": "Song Title 7",
-    "description": "Song G"
+    "artist": "Artist G"
   },
 
   {
     "name": "Song Title 8",
-    "description": "Song H"
+    "artist": "Artist H"
   }
 ]

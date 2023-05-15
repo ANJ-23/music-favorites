@@ -15,4 +15,20 @@ Favorites.belongsTo(User, {
   foreignKEy: 'user_id'
 });
 
+// Songs belongToMany User (through Favorites)
+/* Songs.belongsToMany(User, {
+  through: {
+      model: Favorites,
+      unique: false,
+  },
+}); */
+
+// User belongToMany Songs (through Favorites)
+/* User.belongsToMany(Songs, {
+  through: {
+      model: Favorites,
+      unique: false,
+  },
+}); */
+
 module.exports = { User, Songs, Favorites };
