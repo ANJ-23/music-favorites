@@ -1,10 +1,12 @@
-// Renders songs in the Songs table
+// Renders songs in the Songs table(?)
+// or does this render 
 
 const router = require('express').Router();
 const { Songs } = require('../../models'); // assumes the 'song' model is named "Songs"
 
 // posts songs & its details to the "Songs" page
 router.post('/', async (req, res) => {
+  
   try {
     const newProject = await Songs.create({
       ...req.body,
@@ -17,10 +19,11 @@ router.post('/', async (req, res) => {
   }
 });
 
-// renders ALL favorited songs to "Songs" page
+// GET - renders ALL (favorited) songs to "Songs" page
 router.get('/', async (req, res) => {
   try {
     const songData = await Songs.findAll({});
+    console.log(songData);
 
     // renders project from 'project' model to homepage (in '../../models')
     res.render('homepage', {
@@ -47,7 +50,7 @@ router.get('/', async (req, res) => {
   }
 }); */
 
-// Deletes a song under specific ID
+// Deletes a favorited song under specific ID
 router.delete('/:id', async (req, res) => {
   try {
     const songData = await Songs.destroy({

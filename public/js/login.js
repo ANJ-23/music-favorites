@@ -19,6 +19,7 @@ const loginFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
+      // alert(response.statusText);
       alert('Failed to log in.');
     }
   }
@@ -29,15 +30,15 @@ const signupFormHandler = async (event) => {
   event.preventDefault();
 
   // obtains values from sign-up form
-  const username = document.querySelector('#username-signup').value.trim();
+  const name = document.querySelector('#username-signup').value.trim();
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
   // if username, email, and password forms are filled out, create a new user via '/api/userRoutes.js'
-  if (username && email && password) {
+  if (name && email && password) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ username, email, password }),
+      body: JSON.stringify({ name, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
@@ -45,6 +46,7 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
+      // alert(response.statusText);
       alert('Failed to sign up.');
     }
   }

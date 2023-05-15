@@ -1,0 +1,1 @@
+// renders favorites in Favorites table(?)
