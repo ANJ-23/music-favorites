@@ -1,4 +1,5 @@
-const router = require ('express').Router()
+const router = require ('express').Router();
+const { Songs, User, Favorites } = require('../models');
 
 // default route - homepage
 router.get("/", async (req, res) => {
@@ -26,15 +27,25 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
+// GET - obtains Page 2 (song list)
 router.get("/dashboard", async (req, res) => {
-    try{
-        console.log ("Test")
-        res.render("dashboard")
-    } catch(err){
+    try {
+        // gathers all songs from the "Songs" table via Sequelize object
+        const songData = await Songs.findAll({});
+
+        // Serialize & map data so the Handlebar template can read it
+        const songs = songData.map((song) => song.get({ plain: true }));
+
+        res.render("dashboard", {
+            songs,
+            loggedIn: req.session.loggedIn,
+        })
+    } catch(err) {
         console.log(err)
     }
 })
 
+// GET - obtains Page 3 (user's favorites)
 router.get("/favorites", async (req, res) => {
     try{
         console.log ("Test")
@@ -43,6 +54,33 @@ router.get("/favorites", async (req, res) => {
         console.log(err)
     }
 })
+
+// GET - obtains favorites from specific user (in theory)
+// [] OFFICE HOURS: ask how to store & obtain favorites as a specific user
+router.get("/favorites/:id", async (req, res) => {
+    try {
+        // obtains favorites based on user's ID value
+        const favoritesData = await Favorites.findAll(req.params.id, {
+          include: [
+            {
+                model: User,
+                attributes: ['name'],
+            },
+          ],
+        });
+    
+        // Serializes all favorites
+        const favorites = favoritesData.map((fav) => fav.get({ plain: true }));
+    
+        // renders 'favorites' handlebar
+        res.render('favorites', {
+            favorites,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 router.post('/addToFavorite',(req,res)=>{
     console.log(req.body);

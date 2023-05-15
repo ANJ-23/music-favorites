@@ -12,80 +12,46 @@
         <th>
             Artist
         </th>
-        <th>Release Date</th>
-        <th>Add To Favorite</th>
+        <th>
+            Add To Favorite
+        </th>
     </thead>
+
     <tbody>
-    <tr>
-   <td>Song 1</td>
-   <td>Artist 1</td>
-   <td>Release Date 1</td>
-   <td><button onclick="addToFav('Song 1')">Add To Fav</button></td>
-    </tr>
+        {{!-- 
+        FROM 'router.get("/dashboard", ...)' in '/controllers/html-routes.js' :
 
-    <tr>
-   <td>Song 2</td>
-   <td>Artist 2</td>
-   <td>Release Date 2</td>
-   <td><button>Add To Fav</button></td>
-    </tr>
+        For each |song| in the 'songs' variable,
+            render a table row that contains a song's name & artist ('song.name' & 'song.artist', respectively)
+            also renders a button
+         --}}
+        {{#each songs as |song|}}
+        <tr>
+            <td>{{song.name}}</td>
+            <td>{{song.artist}}</td>
+            <td><button>Add To Fav</button></td>
+        </tr>
+        {{/each}}
+        {{!-- <tr>
+            <td>Song 1</td>
+            <td>Artist 1</td>
+            <td>Release Date 1</td>
+            <td><button onclick="addToFav('Song 1')">Add To Fav</button></td>
+        </tr>
 
-    <tr>
-   <td>Song 3</td>
-   <td>Artist 3</td>
-   <td>Release Date 3</td>
-   <td><button>Add To Fav</button></td>
-    </tr>
+        <tr>
+            <td>Song 2</td>
+            <td>Artist 2</td>
+            <td>Release Date 2</td>
+            <td><button>Add To Fav</button></td>
+        </tr>
 
-    <tr>
-   <td>Song 4</td>
-   <td>Artist 4</td>
-   <td>Release Date 4</td>
-   <td><button>Add To Fav</button></td>
-    </tr>
-
-    <tr>
-   <td>Song 5</td>
-   <td>Artist 5</td>
-   <td>Release Date 5</td>
-   <td><button>Add To Fav</button></td>
-    </tr>
-
-    <tr>
-   <td>Song 6</td>
-   <td>Artist 6</td>
-   <td>Release Date 6</td>
-   <td><button>Add To Fav</button></td>
-    </tr>
-
-    <tr>
-   <td>Song 7</td>
-   <td>Artist 7</td>
-   <td>Release Date 7</td>
-   <td><button>Add To Fav</button></td>
-    </tr>
-
-    <tr>
-   <td>Song 8</td>
-   <td>Artist 8</td>
-   <td>Release Date 8</td>
-   <td><button>Add To Fav</button></td>
-    </tr>
-
-    <tr>
-   <td>Song 9</td>
-   <td>Artist 9</td>
-   <td>Release Date 9</td>
-   <td><button>Add To Fav</button></td>
-    </tr>
-
-    <tr>
-   <td>Song 10</td>
-   <td>Artist 10</td>
-   <td>Release Date 10</td>
-   <td><button>Add To Fav</button></td>
-    </tr>
-
+        <tr>
+            <td>Song 3</td>
+            <td>Artist 3</td>
+            <td>Release Date 3</td>
+            <td><button>Add To Fav</button></td>
+        </tr> --}}
     </tbody>
 </table>
 </div>
