@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS music-favorites_db;
-CREATE DATABASE music-favorites_db;
+DROP DATABASE IF EXISTS musicfavorites_db;
+CREATE DATABASE musicfavorites_db;
