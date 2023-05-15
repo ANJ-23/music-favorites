@@ -1,7 +1,7 @@
 // Handles login functionality (occurs when user presses "login" and "logout")
 
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Songs, Favorites } = require('../../models');
 
 // /api/users
 // POST - calling this POST method creates a new user
@@ -32,7 +32,18 @@ router.post('/login', async (req, res) => {
   console.log ("loginRoute");
   try {
     // gathers user emails in data table
-    const userData = await User.findOne({ where: { email: req.body.email } });
+    const userData = await User.findOne(
+      { 
+        where: { 
+          email: req.body.email 
+        }
+      },
+      {
+        include: [
+          { model: Songs, through: Favorites, as: "favorite_songs"}
+        ]
+      }
+    );
 
     // if email is incorrect, send error
     if (!userData) {
@@ -72,7 +83,6 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// logs out user
 // logout button pressed = logs out user
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {

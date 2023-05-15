@@ -55,9 +55,27 @@ router.get("/favorites", async (req, res) => {
     }
 })
 
+
+// This will render out a page for an individual user
+router.get("/favorites/:id", async(req, res) => {
+    // adds new favorite song
+    const foundUser = await User.findByPk(req.params.id).include([
+        { 
+            model: "Songs", 
+            through: "Favorites", 
+            as: "favorite_songs" 
+        }
+    ]);
+
+    // renders new favorite song
+    res.render("favorites", {
+        user: foundUser, // refers to the user's Songs through Favorites
+    })
+})
+
 // GET - obtains favorites from specific user (in theory)
 // [] OFFICE HOURS: ask how to store & obtain favorites as a specific user
-router.get("/favorites/:id", async (req, res) => {
+/* router.get("/favorites/:id", async (req, res) => {
     try {
         // obtains favorites based on user's ID value
         const favoritesData = await Favorites.findAll(req.params.id, {
@@ -85,5 +103,6 @@ router.get("/favorites/:id", async (req, res) => {
 router.post('/addToFavorite',(req,res)=>{
     console.log(req.body);
    res.status(200).json("Success")
-})
-module.exports = router
+}) */
+
+module.exports = router;
