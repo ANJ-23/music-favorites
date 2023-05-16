@@ -9,7 +9,9 @@ const favHandler = async (event) => {
     // song_id has to be passed in
     await fetch("/api/songs/add", {
         method: 'POST',
-        body: JSON.stringify({song_id: songId}), // sends 'id' number as 'req.body'
+        body: JSON.stringify({
+            song_id: songId, // sends 'id' number as 'req.body'
+        }), 
         headers: { 'Content-Type': 'application/json' },
     });
 };
