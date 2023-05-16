@@ -13,60 +13,16 @@
         </th>
         <th>
             Artist
-        </th>
-       
-        
+        </th>  
     </thead>
+    
     <tbody>
-    <tr>
-   <td>Song 1</td>
-   <td>Artist 1</td>
-    </tr>
-
-    <tr>
-   <td>Song 2</td>
-   <td>Artist 2</td>
-    </tr>
-
-    <tr>
-   <td>Song 3</td>
-   <td>Artist 3</td>
-    </tr>
-
-    <tr>
-   <td>Song 4</td>
-   <td>Artist 4</td>
-    </tr>
-
-    <tr>
-   <td>Song 5</td>
-   <td>Artist 5</td>
-    </tr>
-
-    <tr>
-   <td>Song 6</td>
-   <td>Artist 6</td>
-    </tr>
-
-    <tr>
-   <td>Song 7</td>
-   <td>Artist 7</td>
-    </tr>
-
-    <tr>
-   <td>Song 8</td>
-   <td>Artist 8</td>
-    </tr>
-
-    <tr>
-   <td>Song 9</td>
-   <td>Artist 9</td>
-    </tr>
-
-    <tr>
-   <td>Song 10</td>
-   <td>Artist 10</td>
-    </tr>
+        {{#each songs as |song|}}
+        <tr>
+            <td>{{song.name}}</td>
+            <td>{{song.artist}}</td>
+        </tr>
+        {{/each}}
 
     </tbody>
 </table>

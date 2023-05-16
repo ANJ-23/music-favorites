@@ -9,6 +9,9 @@
 <table id="table" class="has-text-success">
     <thead>
         <th> 
+            #
+        </th>
+        <th> 
             Song Title
         </th>
         <th>
@@ -28,10 +31,13 @@
             also renders a button
          --}}
         {{#each songs as |song|}}
-        <tr>
-            <td>{{song.name}}</td>
-            <td>{{song.artist}}</td>
-            <td><button>Add To Fav</button></td>
+        <tr for="song-id">
+            <td id="song-id">{{song.id}}</td>
+            <td id="song-name">{{song.name}}</td>
+            <td id="song-artist">{{song.artist}}</td>
+            {{!-- this button sends/stores the respective song's ID --}}
+            {{!-- <td><button data-song-id={{song.id}} type="submit" class="add-to-fav">Add To Fav</button></td> --}}
+            <td><button data-song-id={{song.id}} type="submit" class="add-to-fav">Add To Fav</button></td>
         </tr>
         {{/each}}
         {{!-- <tr>
@@ -46,19 +52,13 @@
             <td>Artist 2</td>
             <td>Release Date 2</td>
             <td><button>Add To Fav</button></td>
-        </tr>
-
-        <tr>
-            <td>Song 3</td>
-            <td>Artist 3</td>
-            <td>Release Date 3</td>
-            <td><button>Add To Fav</button></td>
         </tr> --}}
     </tbody>
 </table>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
 
 <script>
 function addToFav(name){
@@ -75,3 +75,4 @@ function addToFav(name){
     })
 }
 </script>
+<script src="./js/favoritesAdd.js"></script>
