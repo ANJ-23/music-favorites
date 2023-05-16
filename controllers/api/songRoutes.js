@@ -1,5 +1,4 @@
-// Renders songs in the Songs table(?)
-// or does this render 
+// Handles adding & removing songs from User's 'Favorites' list
 
 const router = require('express').Router();
 const { Songs, User, Favorites } = require('../../models'); // assumes the 'song' model is named "Songs"
@@ -9,15 +8,28 @@ router.post('/add', async (req, res) => {
   console.log("POST: /api/songs/add")
 
   try {
+    // stores request's song_id as a variable
+    const songId = req.body.song_id;
+
+    // find song by Song's ID (stored in 'songId') & stores that song
+    const foundSong = await Songs.findByPk(songId, 
+      {
+        where: {
+          id: songId,
+        }
+      }
+    );
+
     // '.create()' method creates new favorite to STORE later
-    // creates new "Favorites" data object
+    // creates new "Favorites" data object using the "found song's" keys
     const newFav = await Favorites.create({
+      name: foundSong.name,
+      artist: foundSong.artist,
       song_id: parseInt(req.body.song_id), // 'song_id' - requested by "/public/js/favoritesAdd.js"
       user_id: req.session.user_id, // currently logged in user's ID
     });
 
     req.session.save(() => {
-
       // response stores 'newFav' to "favoritesData.json"
       res.status(200).json(newFav);
     });
@@ -27,38 +39,7 @@ router.post('/add', async (req, res) => {
   }
 });
 
-// GET - renders ALL (favorited) songs to "Songs" page
-/* router.get('/', async (req, res) => {
-  try {
-    const songData = await Songs.findAll({});
-    console.log(songData);
-
-    // renders project from 'project' model to homepage (in '../../models')
-    res.render('homepage', {
-      songData,
-      loggedIn: req.session.loggedIn // does the user have to be logged in?
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-}); */
-
-// renders ONE song
-/* router.get('/:id', async (req, res) => {
-  try {
-    const projectData = await Project.findByPk(req.params.id, {});
-
-    // renders project from 'project' model (in '../../models')
-    res.render('project', {
-      projectData,
-      loggedIn: req.session.loggedIn // does the user have to be logged in?
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-}); */
-
-// Deletes a favorited song under specific ID
+// Deletes a favorited song (under specific ID?)
 router.delete('/delete/:id', async (req, res) => {
   try {
     // finds a "Favorites" table object with the corresponding ID; queries a '.destroy()' method

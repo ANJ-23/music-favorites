@@ -1,11 +1,13 @@
 const router = require ('express').Router();
 const { Songs, User, Favorites } = require('../models');
 
-// default route - homepage
+// custom middleware that checks if user's authenticated
+const withAuth = require('../utils/auth');
+
+// GET - Page 1: homepage (default route)
 router.get("/", async (req, res) => {
     try{
         // renders "homepage" handlebar; prompts the user to sign-in or log-in
-        // (Needed?) also checks if user is logged in
         res.render("homepage", {
             // logged_in: req.session.logged_in
         });
@@ -15,20 +17,9 @@ router.get("/", async (req, res) => {
         console.log(err)
     }
 })
-  
-// If the user is already logged in, redirect the request to the "/songs" page
-router.get('/login', (req, res) => {
-    console.log(req.session)
-    // if (req.session.logged_in) {
-    //     res.redirect('/songs');
-    //     return;
-    // }
 
-    res.render('login');
-});
-
-// GET - obtains Page 2 (song list)
-router.get("/dashboard", async (req, res) => {
+// GET - Page 2: song list (the first page the user sees upon signing/logging in)
+router.get("/dashboard", withAuth, async (req, res) => {
     try {
         // gathers all songs from the "Songs" table via Sequelize object
         const songData = await Songs.findAll({});
@@ -45,64 +36,28 @@ router.get("/dashboard", async (req, res) => {
     }
 })
 
-// GET - obtains Page 3 (user's favorites)
-router.get("/favorites", async (req, res) => {
-    try{
-        console.log ("Test")
-        res.render("favorites")
-    } catch(err){
-        console.log(err)
-    }
-})
-
-
-// This will render out a page for an individual user
-router.get("/favorites/:id", async(req, res) => {
-    // adds new favorite song
-    const foundUser = await User.findByPk(req.params.id).include([
-        { 
-            model: "Songs", 
-            through: "Favorites", 
-            as: "favorite_songs" 
+// GET - Page 3: user's favorites (renders 'favorites' page for individual user)
+router.get("/favorites", withAuth, async(req, res) => {
+    // obtain favorite songs under current user's ID (req.session.id)
+    const favSongs = await Favorites.findAll({
+        where: {
+            user_id: req.session.user_id,
         }
-    ]);
+    });
 
-    // renders new favorite song
+    // console.log("current session ID: ", req.session.id);
+    // console.log("req.session.user_id: ", req.session.user_id);
+    // console.log("req.body: ", req.body);
+    // console.log(favSongs);
+
+    // serializes & maps out favorite songs; makes them readable
+    const songs = favSongs.map((song) => song.get({ plain: true }));
+
+    // renders favorite songs
     res.render("favorites", {
-        user: foundUser, // refers to the user's Songs through Favorites
+        songs,
+        loggedIn: req.session.loggedIn,
     })
 })
-
-// GET - obtains favorites from specific user (in theory)
-// [] OFFICE HOURS: ask how to store & obtain favorites as a specific user
-/* router.get("/favorites/:id", async (req, res) => {
-    try {
-        // obtains favorites based on user's ID value
-        const favoritesData = await Favorites.findAll(req.params.id, {
-          include: [
-            {
-                model: User,
-                attributes: ['name'],
-            },
-          ],
-        });
-    
-        // Serializes all favorites
-        const favorites = favoritesData.map((fav) => fav.get({ plain: true }));
-    
-        // renders 'favorites' handlebar
-        res.render('favorites', {
-            favorites,
-            logged_in: req.session.logged_in
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-router.post('/addToFavorite',(req,res)=>{
-    console.log(req.body);
-   res.status(200).json("Success")
-}) */
 
 module.exports = router;
