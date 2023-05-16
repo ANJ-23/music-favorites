@@ -1,20 +1,59 @@
 [
+  
   {
-    "name": "Song Title 1",
-    "artist": "Artist A",
+    "name": "Laka",
+    "artist": "Emapea",
     "song_id": 1,
     "user_id": 1
   },
+
   {
-    "name": "Song Title 2",
-    "artist": "Artist B",
+    "name": "Piano Joint",
+    "artist": "Suff Daddy",
     "song_id": 2,
     "user_id": 1
   },
+
   {
-    "name": "Song Title 3",
-    "artist": "Artist C",
+    "name": "Suave",
+    "artist": "Saib",
     "song_id": 3,
     "user_id": 2
+  },
+
+  {
+    "name": "Eyes to the Skies",
+    "artist": "Buda Monk",
+    "song_id": 4,
+    "user_id": 2
+  },
+
+  {
+    "name": "Sail",
+    "artist": "Muete",
+    "song_id": 5,
+    "user_id": 2
+  },
+
+  {
+    "name": "Oscillate",
+    "artist": "Alexander Flood",
+    "song_id": 6,
+    "user_id": 2
+  },
+
+  {
+    "name": "II Sole",
+    "artist": "Gianni Brezzo",
+    "song_id": 7,
+    "user_id": 2
+  },
+
+  {
+    "name": "Notness of Sonnets",
+    "artist": "Tomppabeats",
+    "song_id": 8,
+    "user_id": 2
   }
+
 ]
