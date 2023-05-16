@@ -2,28 +2,28 @@
 
 <section class="hero is-fullheight" style="background-color: black;">
 
-<h1 class="has-text-success is-size-1" id="fav">Favorites Playlist</h1>
+    <h1 class="has-text-success is-size-1" id="fav">Favorites Playlist</h1>
 
-<div style="overflow-x: auto;">
+    <div style="overflow-x: auto;">
 
-<table id="table" class="has-text-success">
-    <thead>
-        <th> 
-            Fav Song Title
-        </th>
-        <th>
-            Artist
-        </th>  
-    </thead>
-    
-    <tbody>
-        {{#each songs as |song|}}
-        <tr>
-            <td>{{song.name}}</td>
-            <td>{{song.artist}}</td>
-        </tr>
-        {{/each}}
+        <table id="table" class="has-text-success">
+            <thead>
+                <th>
+                    Fav Song Title
+                </th>
+                <th>
+                    Artist
+                </th>
+            </thead>
 
-    </tbody>
-</table>
-</div>
+            <tbody>
+                {{#each songs as |song|}}
+                <tr>
+                    <td>{{song.name}}</td>
+                    <td>{{song.artist}}</td>
+                </tr>
+                {{/each}}
+
+            </tbody>
+        </table>
+    </div>
