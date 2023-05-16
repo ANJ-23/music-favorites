@@ -26,7 +26,7 @@
 
     <tbody>
         {{!-- 
-        FROM 'router.get("/dashboard", ...)' in '/controllers/html-routes.js' :
+        FROM the method 'router.get("/dashboard", ...)' in '/controllers/html-routes.js' :
 
         For each |song| in the 'songs' variable,
             render a table row that contains a song's name & artist ('song.name' & 'song.artist', respectively)
@@ -38,23 +38,10 @@
             <td id="song-name">{{song.name}}</td>
             <td id="song-artist">{{song.artist}}</td>
             {{!-- this button sends/stores the respective song's ID --}}
-            {{!-- <td><button data-song-id={{song.id}} type="submit" class="add-to-fav">Add To Fav</button></td> --}}
             <td><button data-song-id={{song.id}} type="submit" class="add-to-fav">Add To Fav</button></td>
         </tr>
         {{/each}}
-        {{!-- <tr>
-            <td>Song 1</td>
-            <td>Artist 1</td>
-            <td>Release Date 1</td>
-            <td><button onclick="addToFav('Song 1')">Add To Fav</button></td>
-        </tr>
 
-        <tr>
-            <td>Song 2</td>
-            <td>Artist 2</td>
-            <td>Release Date 2</td>
-            <td><button>Add To Fav</button></td>
-        </tr> --}}
     </tbody>
 </table>
 </div>
