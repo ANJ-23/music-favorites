@@ -1,19 +1,21 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/favorites.css">
 
-<h1 id="fav">Favorites Playlist</h1>
+<section class="hero is-fullheight" style="background-color: black;">
+
+<h1 class="has-text-success is-size-1" id="fav">Favorites Playlist</h1>
 
 <div style="overflow-x: auto;">
 
-<table id="table">
+<table id="table" class="has-text-success">
     <thead>
         <th> 
             Fav Song Title
         </th>
         <th>
             Artist
-        </th>
-        
+        </th>  
     </thead>
+    
     <tbody>
         {{#each songs as |song|}}
         <tr>
