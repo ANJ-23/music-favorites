@@ -1,8 +1,8 @@
 ## JukeLink - Group 3 Project 2
-This project was developed by Group 3 for Project 2.
-Andrew Joo [https://github.com/ANJ-23](https://github.com/ANJ-23)
-Belane Belayhun [https://github.com/belaneb](https://github.com/belaneb)
-Patrick Morris [https://github.com/morrispg] (https://github.com/morrispg)
+This project was developed by Group 3 for Project 2.<br>
+Andrew Joo [https://github.com/ANJ-23](https://github.com/ANJ-23)<br>
+Belane Belayhun [https://github.com/belaneb](https://github.com/belaneb)<br>
+Patrick Morris [https://github.com/morrispg](https://github.com/morrispg)<br>
 & Amy Kilgour [https://github.com/kilgette](https://github.com/kilgette)
 
 # Usage 
