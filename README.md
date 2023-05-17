@@ -22,6 +22,7 @@ The application was developed using the following technologies:
 * JavaScript
 * jQuery
 * SQL
+* Bootstrap
 * Sequelize
 * Express
 * Bulma
